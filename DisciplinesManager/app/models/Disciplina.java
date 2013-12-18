@@ -9,31 +9,24 @@ public class Disciplina extends Model{
 	private static final long serialVersionUID = 1L;
 	
 	private String nome;
-	private List<Disciplina> preRequisitos;
+	private List<String> preRequisitos;
 	private int creditos;
-	private int peso;
 	
-	public Disciplina(String nome, List<Disciplina> preRequisitos, int creditos, int peso){
+	public Disciplina(List<String> preRequisitos, String nome, int creditos){
 		this.nome = nome;
 		this.preRequisitos = preRequisitos;
 		this.creditos = creditos;
-		this.peso = peso;
 	}
 
 	public String getNome() {
 		return nome;
 	}
 
-	public List<Disciplina> getPreRequisitos() {
+	public List<String> getPreRequisitos() {
 		return preRequisitos;
 	}
 
 	public int getCreditos() {
 		return creditos;
 	}
-
-	public int getPeso() {
-		return peso;
-	}
-
 }

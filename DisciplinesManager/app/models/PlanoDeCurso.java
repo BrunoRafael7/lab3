@@ -10,12 +10,12 @@ public class PlanoDeCurso {
 	public PlanoDeCurso(){
 		periodos = new LinkedList<Periodo>();
 		/*
-		 * CREATOR : Pois plano de curso guarda periodos
+		 * CREATOR : A criação do Periodo ficou em plano de curso
+		 * Pois plano de curso guarda periodos
 		 */
 		periodos.add(new Periodo());
 	}
 	public List<Periodo> getPeriodos() {
 		return periodos;
-	}
-	
+	}	
 }
