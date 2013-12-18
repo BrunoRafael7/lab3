@@ -1,4 +1,4 @@
-import model.Periodo;
+import models.Periodo;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -13,7 +13,7 @@ public class PeriodoTest {
 	}
 	
 	@Test
-	public void deveRetornarTodasAsDisciplinas({
+	public void deveRetornarTodasAsDisciplinas(){
 		assertEquals("PROGRAMACAO1", periodo.getDisciplinas().get(0).getName());
 		assertEquals(".LABORATORIO_DE_PROGRAMACAO1", periodo.getDisciplinas().get(1));
 		assertEquals("INTRODUCAO_A_COMPUTACAO", periodo.getDisciplinas().get(2));
