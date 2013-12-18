@@ -24,7 +24,6 @@ public class ColetorDeDisciplinas {
 							new FileInputStream(new File(path))
 					)
 			);
-			
 			String[] line = reader.readLine().split("-");
 			disciplinasColetadas.add(criarDisciplina(line));
 			
@@ -39,9 +38,9 @@ public class ColetorDeDisciplinas {
 		List<String> preRequisitos = criarListaDePreRequisitos(line[0]);
 		String nome = line[1];
 		int creditos = Integer.parseInt(line[2]);
+		int periodo = Integer.parseInt(line[3]);
 		
-		
-		return new Disciplina(preRequisitos, nome, creditos);
+		return new Disciplina(preRequisitos, nome, creditos, periodo);
 	}
 
 	private List<String> criarListaDePreRequisitos(String line) {

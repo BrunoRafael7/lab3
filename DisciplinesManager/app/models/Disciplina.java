@@ -11,11 +11,13 @@ public class Disciplina extends Model{
 	private String nome;
 	private List<String> preRequisitos;
 	private int creditos;
+	private int periodo;
 	
-	public Disciplina(List<String> preRequisitos, String nome, int creditos){
+	public Disciplina(List<String> preRequisitos, String nome, int creditos, int periodo){
 		this.nome = nome;
 		this.preRequisitos = preRequisitos;
 		this.creditos = creditos;
+		this.periodo = periodo;
 	}
 
 	public String getNome() {
@@ -28,5 +30,9 @@ public class Disciplina extends Model{
 
 	public int getCreditos() {
 		return creditos;
+	}
+
+	public int getPeriodo() {
+		return periodo;
 	}
 }
