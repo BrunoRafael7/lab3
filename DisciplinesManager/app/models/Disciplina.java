@@ -2,7 +2,11 @@ package models;
 
 import java.util.List;
 
-public class Disciplina {
+import play.db.ebean.Model;
+
+public class Disciplina extends Model{
+	
+	private static final long serialVersionUID = 1L;
 	
 	private String nome;
 	private List<Disciplina> preRequisitos;
