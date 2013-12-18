@@ -11,7 +11,7 @@ public class Periodo {
 		disciplinas = new LinkedList<Disciplina>();
 	}
 	
-	public Object getDisciplinas() {
+	public List<Disciplina> getDisciplinas() {
 		return disciplinas;
 	}
 

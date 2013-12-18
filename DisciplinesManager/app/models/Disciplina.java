@@ -4,20 +4,20 @@ import java.util.List;
 
 public class Disciplina {
 	
-	private String name;
+	private String nome;
 	private List<Disciplina> preRequisitos;
 	private int creditos;
 	private int peso;
 	
-	public Disciplina(String name, List<Disciplina> preRequisitos, int creditos, int peso){
-		this.name = name;
+	public Disciplina(String nome, List<Disciplina> preRequisitos, int creditos, int peso){
+		this.nome = nome;
 		this.preRequisitos = preRequisitos;
 		this.creditos = creditos;
 		this.peso = peso;
 	}
 
-	public String getName() {
-		return name;
+	public String getNome() {
+		return nome;
 	}
 
 	public List<Disciplina> getPreRequisitos() {
