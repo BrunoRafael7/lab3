@@ -30,30 +30,22 @@
 </header>
 <div class="wrapper" style="height: 100%;">
 	<div class="titulo">
+	<br>
 		<nome-principal>Meu Curso</nome-principal>
-	</div>
-	<br/>	
+	</br>
+	</div>	
 	<div id="colunas">
-		@for(periodo <- periodos){
-			<div id="c1" class="coluna">
-			@for(disciplina <- periodo.getDisciplinas()){
-				<div class="disciplina">
-					<nome>@disciplina.getNome()</nome><br/>
-					<descricao>@disciplina.getCreditos() creditos</descricao>
-				</div>
-			}
-			<p></p>
-			<creditos>Créditos : @periodo.getTotalDeCreditos() </creditos>
+		<div id="c1" class="col-xs-5 coluna">
+		@for(disciplina <- periodos.get(0).getDisciplinas()){
+			<div class="col-xs-10 col-md-offset-1 disciplina">
+				<nome>@disciplina.getNome()</nome><br/>
+				<descricao>@disciplina.getCreditos() creditos</descricao>
 			</div>
 		}
+		<p></p>
+		<creditos>Créditos : @periodos.get(0).getTotalDeCreditos() </creditos>
+		</div>
 	
-		<div id="c2" class="coluna"></div>
-		<div id="c3" class="coluna"></div>
-		<div id="c4" class="coluna"></div>
-		<div id="c5" class="coluna"></div>
-		<div id="c6" class="coluna"></div>
-		<div id="c7" class="coluna"></div>
-		<div id="c8" class="coluna"></div>
 	</div>
 	<div class="titulo">
 			<nome-principal>Disciplinas Ofertadas</nome-principal>
