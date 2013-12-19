@@ -23,7 +23,9 @@ public class PlanoDeCurso {
 	public PlanoDeCurso(){
 		periodos = new LinkedList<Periodo>();
 		gradeCurricular = new GradeCurricular();
-		periodos.add(new Periodo(gradeCurricular.todasAsDisciplinas(1)));
+		for (int i = 1; i < 9; i++) {
+			periodos.add(new Periodo(gradeCurricular.todasAsDisciplinas(i))); 
+		}
 	}
 	
 	public List<Periodo> getPeriodos() {
