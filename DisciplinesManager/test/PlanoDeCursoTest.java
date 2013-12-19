@@ -24,5 +24,10 @@ public class PlanoDeCursoTest {
 		assertEquals("Laboratório_de_Programação_I",planoDeCurso.getPeriodos().get(0).getDisciplinas().get(5).getNome());
 		
 	}
+	
+	@Test
+	public void deveRetornarTotalDeCreditosAtualmenteNoPeriodo(){
+		assertEquals(22, planoDeCurso.getPeriodos().get(0).getTotalDeCreditos());
+	}
 
 }

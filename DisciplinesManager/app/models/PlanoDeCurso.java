@@ -11,16 +11,15 @@ public class PlanoDeCurso {
 	private List<Periodo> periodos;
 	
 	/*
-	 * CREATOR : grade curricular será referenciada em Plano de curso,
+	 * CREATOR : 
+	 * 1 - Grade curricular será referenciada em Plano de curso,
 	 * pois plano de curso usa muito a grade Curricular
+	 * 2 - A criação do Periodo ficou em plano de curso
+	 * Pois plano de curso guarda periodos
 	 */
 	
 	private GradeCurricular gradeCurricular;
-	
-	/*
-	 * CREATOR : A criação do Periodo ficou em plano de curso
-	 * Pois plano de curso guarda periodos
-	 */
+
 	public PlanoDeCurso(){
 		periodos = new LinkedList<Periodo>();
 		gradeCurricular = new GradeCurricular();
