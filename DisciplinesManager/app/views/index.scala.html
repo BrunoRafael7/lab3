@@ -36,6 +36,8 @@
 	</div>	
 	<div id="colunas">
 		<div id="c1" class="col-xs-5 col-md-offset-1 coluna">
+		<p></p>
+		<periodos>1º Período</periodos>
 		@for(disciplina <- periodos.get(0).getDisciplinas()){
 			<div class="col-xs-10 col-md-offset-1 disciplina">
 				<nome>@disciplina.getNome()</nome><br/>
@@ -45,8 +47,6 @@
 		<p></p>
 		<creditos>Créditos : @periodos.get(0).getTotalDeCreditos() </creditos>
 		</div>
-		
-		
 	
 	</div>
 	<div class="titulo">
