@@ -14,8 +14,12 @@ import java.util.List;
  */
 public class ColetorDeDisciplinas {
 	
-	private String path = "/disciplinas";
+	private String path = "disciplinas";
 	private List<Disciplina> disciplinasColetadas;
+	
+	public ColetorDeDisciplinas(){
+		disciplinasColetadas = new LinkedList<Disciplina>();
+	}
 	
 	public List<Disciplina> coletar(){
 		try {
@@ -24,8 +28,10 @@ public class ColetorDeDisciplinas {
 							new FileInputStream(new File(path))
 					)
 			);
-			String[] line = reader.readLine().split("-");
-			disciplinasColetadas.add(criarDisciplina(line));
+			while(reader.ready()){
+				String[] line = reader.readLine().split("-");
+				disciplinasColetadas.add(criarDisciplina(line));
+			}
 			
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -39,7 +45,10 @@ public class ColetorDeDisciplinas {
 		String nome = line[1];
 		int creditos = Integer.parseInt(line[2]);
 		int periodo = Integer.parseInt(line[3]);
-		
+		/*
+		 * CREATOR : ColetorDeDisciplinas será o responsável por criar Disciplinas pois 
+		 * ColetorDeDisciplinas tem as informações necessárias para a criação de uma Disciplina 
+		 */
 		return new Disciplina(preRequisitos, nome, creditos, periodo);
 	}
 
