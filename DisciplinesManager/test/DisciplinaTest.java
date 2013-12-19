@@ -26,8 +26,6 @@ public class DisciplinaTest {
 	
 	@Test
 	public void deveVerifiarNomeEPreRequisitos(){
-		System.out.println(oac.getPreRequisitos().toString());
-
 		assertEquals("Cálculo_Diferencial_e_Integral_II", calculo2.getNome());
 		assertEquals("[[Cálculo_Diferencial_e_Integral_I]]" , calculo2.getPreRequisitos().toString());
 
