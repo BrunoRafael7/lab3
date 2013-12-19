@@ -8,6 +8,12 @@ descricao {
 	font-size: 12px;
 }
 
+creditos {
+	color: #456A8B;
+	font-size: 20px;
+	font-weight: bold;
+}
+
 nome-principal {
 	color: #FFFFFF;
 	font-size: 25px;
@@ -50,12 +56,13 @@ nome-principal {
 .coluna {
 	background-color: #d8e2eb;
 	float: left;
-	height: 410px;
+	height: 450px;
 	width: 148px;
 	margin-left: 10.5px;
 	margin-top: 10px;
 	border-radius: 10px;
 	padding-top: 2px;
+	text-align: center;
 }
 
 #disciplinas {
