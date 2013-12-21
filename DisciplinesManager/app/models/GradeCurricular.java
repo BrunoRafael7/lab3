@@ -30,7 +30,15 @@ public class GradeCurricular {
 		return disciplinas.get(nome);
 	}
 	
-	public List<Disciplina> todasAsDisciplinas(int periodo){
+	
+	public List<Disciplina> getAllDisciplines(){
+		List<Disciplina> allDisciplines = new LinkedList<Disciplina>();
+		for(Disciplina dsp : disciplinas.values()){
+			allDisciplines.add(dsp);
+		}
+		return allDisciplines;
+	}
+	public List<Disciplina> getAllDisciplines(int periodo){
 		List<Disciplina> allDisciplines = new LinkedList<Disciplina>();
 		for(Disciplina dsp : disciplinas.values()){
 			if(dsp.getPeriodo() == periodo){

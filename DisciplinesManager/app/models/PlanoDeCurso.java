@@ -20,11 +20,12 @@ public class PlanoDeCurso {
 	 */
 	
 	private GradeCurricular gradeCurricular;
-
+	private final int PRIMEIROPERIODO = 1;
+	
 	public PlanoDeCurso(){
 		periodos = new LinkedList<Periodo>();
 		gradeCurricular = new GradeCurricular();
-		periodos.add(new Periodo(gradeCurricular.todasAsDisciplinas(1))); 
+		periodos.add(new Periodo(gradeCurricular.getAllDisciplines(PRIMEIROPERIODO))); 
 	}
 	
 	public List<Periodo> getPeriodos() {
@@ -35,6 +36,34 @@ public class PlanoDeCurso {
 		periodos.add(new Periodo(disciplinas));
 	}
 	
+	public List<Disciplina> getAllDisciplines(){
+		return gradeCurricular.getAllDisciplines();
+	}
+	
+	
+	public boolean verificaSePreRequisitosEstaoOK(List<Disciplina> listaDeDisciplinas, List<Periodo> listaPeriodos){
+		boolean resp = false;
+		
+		for(Disciplina cadaDisciplinaAVerificar : listaDeDisciplinas){	
+			if(cadaDisciplinaAVerificar.getPreRequisitos().size() > 0){ //So entra se discip tiver pre requisito a verificar
+				List<String> listaPreRequisito = cadaDisciplinaAVerificar.getPreRequisitos();
+				for(Periodo cadaPeriodo : listaPeriodos){	
+					for(String cadaPreRequisito : listaPreRequisito){
+						if(cadaPeriodo.getDisciplinas().contains(cadaPreRequisito)){
+							resp = true;
+						}else{
+							return false;
+						}
+					}
+				}
+			}
+		}
+		return resp;
+	}
+	
+	/*
+	 * Padrão Expert
+	 */
 	private boolean estaComMinimoDeCreditos(List<Disciplina> disciplinas){
 		boolean resp = false;
 		int contaCredito = 0;
@@ -45,5 +74,24 @@ public class PlanoDeCurso {
 			resp = true;
 		}
 		return resp;
+	}
+	
+	/*
+	 * Padrão Expert
+	 */
+	private boolean estaComMaximoDeCreditos(List<Disciplina> disciplinas){
+		boolean resp = false;
+		int contaCredito = 0;
+		for(Disciplina disciplina : disciplinas){
+			contaCredito += disciplina.getCreditos();
+		}
+		if(contaCredito <= MAXIMO_DE_CREDITOS){
+			resp = true;
+		}
+		return resp;
+	}
+	
+	private boolean estaComCreditosPermitido(List<Disciplina> disciplinas){
+		return (this.estaComMinimoDeCreditos(disciplinas) && this.estaComMaximoDeCreditos(disciplinas));
 	}
 }
