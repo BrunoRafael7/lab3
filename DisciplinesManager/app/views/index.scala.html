@@ -1,11 +1,13 @@
 @(periodos: List[Periodo], disciplinasOfertadas: List[Disciplina]);
 
 @import helper._ 
+@routes.Assets.at("javascripts/script.js");
+@routes.Assets.at("javascripts/jquery-1.9.0.min.js");
 
 <br>
 @main("Meu curso") {
 </br>
-<script type="text/javascript" language="javascript" src="javascripts/jquery-1.9.0.min.js"></script>
+
 <header class="navbar navbar-inverse navbar-fixed-top bs-docs-nav"
 	role="banner">
 	<div class="navbar-inverse">
@@ -28,6 +30,30 @@
 		</div>
 	</div>
 </header>
+<script>$(document).ready(function(){
+	alert("desgraça.com");
+	$('div.disciplina').Sortable({
+				onChange 		: function(){	    			 
+
+					serialEsq = $.SortSerialize('c1');
+
+					serialDir = $.SortSerialize('c2');
+
+
+				},
+
+				onStart : function(){
+					$.iAutoscroller.start(this, document.getElementsByTagName('wrapper'));
+				},
+
+				onStop : function(){
+					$.iAutoscroller.stop();
+				}
+
+			}
+
+		);
+});</script>
 <div class="wrapper" style="height: 100%;">
 	<div class="titulo">
 	<br>
@@ -36,29 +62,29 @@
 	</div>	
 	<div id="colunas">
 		<div id="c1" class="col-xs-5 col-md-offset-1 coluna">
-			/*<br></br>
-			<periodos>1º Período</periodos>
-			@for(disciplina <- periodos.get(0).getDisciplinas()){
-			<div class="teste2 col-xs-10 col-md-offset-1 disciplina">
-				<nome>@disciplina.getNome()</nome>
-				<br />
-				<descricao>@disciplina.getCreditos() creditos</descricao>
-			</div>
-			} <br></br> <br></br> <br></br> <br></br>
-			<creditos>Créditos : @periodos.get(0).getTotalDeCreditos()
-			</creditos>*/
+			<br></br>
+                        <periodos>1º Período</periodos>
+                        @for(disciplina <- periodos.get(0).getDisciplinas()){
+                        <div class="col-xs-10 col-md-offset-1 disciplina">
+                                <nome>@disciplina.getNome()</nome>
+                                <br />
+                                <descricao>@disciplina.getCreditos() creditos</descricao>
+                        </div>
+                        } <br></br> <br></br> <br></br> <br></br>
+                        <creditos>Créditos : @periodos.get(0).getTotalDeCreditos()
+                        </creditos>
 		</div>
 		
 		<div id="c2" class="col-xs-5 col-md-offset-1 coluna">
 			<br></br>
-			<diciplinas-ofertadas>Disciplinas Ofertadas</diciplinas-ofertadas>
-			@for(disciplina <- disciplinasOfertadas){
-			<div class="teste disciplina col-xs-10 col-md-offset-1">
-				<nome>@disciplina.getNome()</nome>
-				<br/>
-				<descricao>@disciplina.getCreditos() creditos</descricao>
-			</div>
-			}
+                        <diciplinas-ofertadas>Disciplinas Ofertadas</diciplinas-ofertadas>
+                        @for(disciplina <- disciplinasOfertadas){
+                        <div class="col-xs-10 col-md-offset-1 disciplina">
+                                <nome>@disciplina.getNome()</nome>
+                                <br/>
+                                <descricao>@disciplina.getCreditos() creditos</descricao>
+                        </div>
+                        }
 		</div>
 	
 	</div>
@@ -66,7 +92,6 @@
 			<nome-principal>Selecione o período</nome-principal>
 	</div>
 	<br/>
-		
 	<div id="disciplinas">
 		<div class="disciplina float-left">
 			<nome>1º período</nome><br/>
@@ -95,12 +120,4 @@
 	</div>
 </div>
 
-<script>
-$( "div.teste" ).draggable({
-    containment: '#c2',
-    cursor: 'move',
-    snap: '#c2'
-  });
-
-</script>
 }
