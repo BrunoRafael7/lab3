@@ -8,7 +8,6 @@ import java.util.List;
  */
 public class PlanoDeCurso {
 	private final int MINIMO_DE_CREDITOS = 12;
-	private final int MAXIMO_DE_CREDITOS = 28;
 	private List<Periodo> periodos;
 	
 	/*
@@ -24,7 +23,7 @@ public class PlanoDeCurso {
 	public PlanoDeCurso(){
 		periodos = new LinkedList<Periodo>();
 		gradeCurricular = new GradeCurricular();
-		periodos.add(new Periodo(gradeCurricular.todasAsDisciplinas(1))); 
+		periodos.add(new Periodo(gradeCurricular.getAllDisciplines(1))); 
 	}
 	
 	public List<Periodo> getPeriodos() {
@@ -33,6 +32,10 @@ public class PlanoDeCurso {
 	
 	public void criaProximoPeriodo(List<Disciplina> disciplinas){
 		periodos.add(new Periodo(disciplinas));
+	}
+	
+	public List<Disciplina> getAllDisciplines(){
+		return gradeCurricular.getAllDisciplines();
 	}
 	
 	private boolean estaComMinimoDeCreditos(List<Disciplina> disciplinas){

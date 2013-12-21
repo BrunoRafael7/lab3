@@ -1,11 +1,11 @@
-@(periodos: List[Periodo]);
+@(periodos: List[Periodo], disciplinasOfertadas: List[Disciplina]);
 
 @import helper._ 
 
 <br>
 @main("Meu curso") {
 </br>
-
+<script type="text/javascript" language="javascript" src="javascripts/jquery-1.9.0.min.js"></script>
 <header class="navbar navbar-inverse navbar-fixed-top bs-docs-nav"
 	role="banner">
 	<div class="navbar-inverse">
@@ -36,56 +36,71 @@
 	</div>	
 	<div id="colunas">
 		<div id="c1" class="col-xs-5 col-md-offset-1 coluna">
-		<p></p>
-		<periodos>1º Período</periodos>
-		@for(disciplina <- periodos.get(0).getDisciplinas()){
-			<div class="col-xs-10 col-md-offset-1 disciplina">
-				<nome>@disciplina.getNome()</nome><br/>
+			/*<br></br>
+			<periodos>1º Período</periodos>
+			@for(disciplina <- periodos.get(0).getDisciplinas()){
+			<div class="teste2 col-xs-10 col-md-offset-1 disciplina">
+				<nome>@disciplina.getNome()</nome>
+				<br />
 				<descricao>@disciplina.getCreditos() creditos</descricao>
 			</div>
-		}
-		<p></p>
-		<creditos>Créditos : @periodos.get(0).getTotalDeCreditos() </creditos>
+			} <br></br> <br></br> <br></br> <br></br>
+			<creditos>Créditos : @periodos.get(0).getTotalDeCreditos()
+			</creditos>*/
+		</div>
+		
+		<div id="c2" class="col-xs-5 col-md-offset-1 coluna">
+			<br></br>
+			<diciplinas-ofertadas>Disciplinas Ofertadas</diciplinas-ofertadas>
+			@for(disciplina <- disciplinasOfertadas){
+			<div class="teste disciplina col-xs-10 col-md-offset-1">
+				<nome>@disciplina.getNome()</nome>
+				<br/>
+				<descricao>@disciplina.getCreditos() creditos</descricao>
+			</div>
+			}
 		</div>
 	
 	</div>
 	<div class="titulo">
-			<nome-principal>Disciplinas Ofertadas</nome-principal>
+			<nome-principal>Selecione o período</nome-principal>
 	</div>
-	<br/>	
+	<br/>
+		
 	<div id="disciplinas">
 		<div class="disciplina float-left">
-			<nome>Disciplina 7</nome><br/>
-			<descricao>20 creditos</descricao>
+			<nome>1º período</nome><br/>
 		</div>
+	<div class="disciplina float-left">
+		<nome>2º período</nome><br/>
+	</div>
 		<div class="disciplina float-left">
-			<nome>Disciplina 8</nome><br/>
-			<descricao>1 credito</descricao>
-		</div>
-				<div class="disciplina float-left">
-			<nome>Disciplina 9</nome><br/>
-			<descricao>20 creditos</descricao>
-		</div>
+		<nome>3º período</nome><br/>
+	</div>
 		<div class="disciplina float-left">
-			<nome>Disciplina 10</nome><br/>
-			<descricao>1 credito</descricao>
-		</div>
-				<div class="disciplina float-left">
-			<nome>Disciplina 11</nome><br/>
-			<descricao>20 creditos</descricao>
-		</div>
+		<nome>4º período</nome><br/>
+	</div>
 		<div class="disciplina float-left">
-			<nome>Disciplina 12</nome><br/>
-			<descricao>1 credito</descricao>
-		</div>
-				<div class="disciplina float-left">
-			<nome>Disciplina 13</nome><br/>
-			<descricao>20 creditos</descricao>
-		</div>
+		<nome>5º período</nome><br/>
+	</div>
 		<div class="disciplina float-left">
-			<nome>Disciplina 14</nome><br/>
-			<descricao>1 credito</descricao>
-		</div>	
+		<nome>6º período</nome><br/>
+	</div>
+		<div class="disciplina float-left">
+		<nome>7º período</nome><br/>
+	</div>
+		<div class="disciplina float-left">
+		<nome>8º período</nome><br/>
+	</div>	
 	</div>
 </div>
+
+<script>
+$( "div.teste" ).draggable({
+    containment: '#c2',
+    cursor: 'move',
+    snap: '#c2'
+  });
+
+</script>
 }

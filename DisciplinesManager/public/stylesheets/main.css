@@ -13,8 +13,7 @@ creditos {
 	font-size: 20px;
 	font-weight: bold;
 }
-
-periodos {
+periodos,diciplinas-ofertadas {
 	color: #456A8B;
 	font-size: 20px;
 	font-weight: bold;
@@ -75,7 +74,7 @@ nome-principal {
 	background-color: #c0c0c0;
 	margin: auto;
 	margin-top: 10px;
-	width: 1280px;
+	width: 1200px;
 	display: inherit;
 }
 
