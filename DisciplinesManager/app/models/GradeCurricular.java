@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 public class GradeCurricular {
-	
+	private final int PRIMEIRO_PERIODO = 1;
 	private Map<String, Disciplina> disciplinas;
 	
 	/*
@@ -34,7 +34,9 @@ public class GradeCurricular {
 	public List<Disciplina> getAllDisciplines(){
 		List<Disciplina> allDisciplines = new LinkedList<Disciplina>();
 		for(Disciplina dsp : disciplinas.values()){
-			allDisciplines.add(dsp);
+			if(dsp.getPeriodo() != PRIMEIRO_PERIODO){
+				allDisciplines.add(dsp);
+			}
 		}
 		return allDisciplines;
 	}
