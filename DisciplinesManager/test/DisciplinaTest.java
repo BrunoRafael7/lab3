@@ -26,11 +26,11 @@ public class DisciplinaTest {
 	
 	@Test
 	public void deveVerificarPreRequisitos(){
-		assertEquals("[[Cálculo_Diferencial_e_Integral_I]]" , grade.get("Cálculo_Diferencial_e_Integral_II").getPreRequisitos().toString());
-		assertEquals("[[Programação_I, Laboratório_de_Programação_I, Introdução_à_Computação]]", grade.get("Programação_II").getPreRequisitos().toString());		
-		assertEquals("[[Teoria_da_Computação, Estruturas_de_Dados_e_Algoritmos, Laboratório_de_Estruturas_de_Dados_e_Algoritmos]]", grade.get("Paradigmas_de_Linguagens_de_Programação").getPreRequisitos().toString());	
-		assertEquals("[[Fundamentos_de_Física_Moderna, Estruturas_de_Dados_e_Algoritmos, Laboratório_de_Estruturas_de_Dados_e_Algoritmos]]", grade.get("Organização_e_Arquitetura_de_Computadores_I").getPreRequisitos().toString());	
-		assertEquals("[[Análise_e_Técnicas_de_Algoritmos, Paradigmas_de_Linguagens_de_Programação, Métodos_Estatísticos]]", grade.get("Inteligência_Artificial_I").getPreRequisitos().toString());
+		assertEquals("[Cálculo_Diferencial_e_Integral_I]" , grade.get("Cálculo_Diferencial_e_Integral_II").getPreRequisitos().toString());
+		assertEquals("[Programação_I, Laboratório_de_Programação_I, Introdução_à_Computação]", grade.get("Programação_II").getPreRequisitos().toString());		
+		assertEquals("[Teoria_da_Computação, Estruturas_de_Dados_e_Algoritmos, Laboratório_de_Estruturas_de_Dados_e_Algoritmos]", grade.get("Paradigmas_de_Linguagens_de_Programação").getPreRequisitos().toString());	
+		assertEquals("[Fundamentos_de_Física_Moderna, Estruturas_de_Dados_e_Algoritmos, Laboratório_de_Estruturas_de_Dados_e_Algoritmos]", grade.get("Organização_e_Arquitetura_de_Computadores_I").getPreRequisitos().toString());	
+		assertEquals("[Análise_e_Técnicas_de_Algoritmos, Paradigmas_de_Linguagens_de_Programação, Métodos_Estatísticos]", grade.get("Inteligência_Artificial_I").getPreRequisitos().toString());
 	}
 	
 	@Test
