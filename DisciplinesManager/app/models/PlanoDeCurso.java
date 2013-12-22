@@ -7,6 +7,7 @@ import java.util.List;
  * CONTROLLER : Classe Plano de curso é a controladora do sistema
  */
 public class PlanoDeCurso {
+	private final int PRIMEIRO_PERIODO = 1;
 	private final int MINIMO_DE_CREDITOS = 12;
 	private final int MAXIMO_DE_CREDITOS = 28;
 	private List<Periodo> periodos;
@@ -20,12 +21,11 @@ public class PlanoDeCurso {
 	 */
 	
 	private GradeCurricular gradeCurricular;
-	private final int PRIMEIROPERIODO = 1;
 	
 	public PlanoDeCurso(){
 		periodos = new LinkedList<Periodo>();
 		gradeCurricular = new GradeCurricular();
-		periodos.add(new Periodo(gradeCurricular.getAllDisciplines(PRIMEIROPERIODO))); 
+		periodos.add(new Periodo(gradeCurricular.getAllDisciplines(PRIMEIRO_PERIODO))); 
 	}
 	
 	public List<Periodo> getPeriodos() {
@@ -40,26 +40,24 @@ public class PlanoDeCurso {
 		return gradeCurricular.getAllDisciplines();
 	}
 	
-	
-	public boolean verificaSePreRequisitosEstaoOK(List<Disciplina> listaDeDisciplinas, List<Periodo> listaPeriodos){
-		boolean resp = false;
-		
-		for(Disciplina cadaDisciplinaAVerificar : listaDeDisciplinas){	
-			if(cadaDisciplinaAVerificar.getPreRequisitos().size() > 0){ //So entra se discip tiver pre requisito a verificar
-				List<String> listaPreRequisito = cadaDisciplinaAVerificar.getPreRequisitos();
-				for(Periodo cadaPeriodo : listaPeriodos){	
-					for(String cadaPreRequisito : listaPreRequisito){
-						if(cadaPeriodo.getDisciplinas().contains(cadaPreRequisito)){
-							resp = true;
-						}else{
-							return false;
-						}
-					}
-				}
-			}
-		}
-		return resp;
+	public boolean verificaSePreRequisitosEstaoOK(Disciplina disciplina, List<Periodo> listaPeriodos){
+        int contaPreRequisitos = 0;
+        List<String> preRequisito = disciplina.getPreRequisitos();
+        if(preRequisito.size() > 0){ //SO ENTRA SE TIVER PRE-REQUISITO
+        	for(Periodo periodo : listaPeriodos){
+        		for(Disciplina disciplinaPeriodo : periodo.getDisciplinas()){
+        			System.out.println("PRE-REQUISITO: " + preRequisito.toString());
+        			System.out.println("DISCIPLINA: " + disciplinaPeriodo.getNome());
+        			if(preRequisito.contains(disciplinaPeriodo.getNome())){
+        				System.out.println("ESTA CONTANDO");
+        				contaPreRequisitos ++;
+        			}
+        		}
+        	}
+        }
+        return (contaPreRequisitos == preRequisito.size());
 	}
+	
 	
 	/*
 	 * Padrão Expert
@@ -91,7 +89,7 @@ public class PlanoDeCurso {
 		return resp;
 	}
 	
-	private boolean estaComCreditosPermitido(List<Disciplina> disciplinas){
+	public boolean estaComQuantidadeDeCreditosPermitido(List<Disciplina> disciplinas){
 		return (this.estaComMinimoDeCreditos(disciplinas) && this.estaComMaximoDeCreditos(disciplinas));
 	}
 }

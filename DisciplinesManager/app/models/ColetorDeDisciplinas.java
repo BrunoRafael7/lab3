@@ -53,13 +53,13 @@ public class ColetorDeDisciplinas {
 	}
 
 	private List<String> criarListaDePreRequisitos(String line) {
-		
-		line.replace("[", "");
-		line.replace("]", "");
+
+		line = line.replace("[", "");
+		line = line.replace("]", "");
+
 		String[] nomesDosPreRequisitos = line.split(",");
 		
 		List<String> preRequisitos = new LinkedList<String>();
-		
 		for(String nome : nomesDosPreRequisitos){
 			preRequisitos.add(nome);
 		}
