@@ -32,7 +32,7 @@
 <body>
 <div class="wrapper">
 	<div id="colunas">
-		<div id="c1" class="coluna">
+		<t1 id="c1" class="coluna">
 			<br></br><br>
                         <periodos>1º Período</periodos>
                         <div id="disciplinasOfertadas" class="allDisciplines">
@@ -45,7 +45,12 @@
 	                        }
 						</div>
                         <creditos>Créditos : @periodos.get(0).getTotalDeCreditos()</creditos>
-		</div>
+		</t1>
+		
+		<t2 id="c1" class="coluna">
+			<br></br><br>
+                        <periodos>2º Período</periodos>
+		</t2>
 		
 		<div id="c2" class="coluna">
 			<br></br><br>
@@ -65,25 +70,36 @@
 			<nome-principal>Selecione o período</nome-principal>
 	</div>
 	<div id="disciplinas">
-<<<<<<< HEAD
-		<button type="button" class="col-md-offset-1 btn">1º Período</button>
-=======
-
-		<button type="button" class="col-md-offset-2 btn">1º Período</button>
->>>>>>> 2bd30c8e553587891240c28d3de1d64e2d773745
-		<button type="button" class="btn">2º Período</button>
+		<button id="button1" type="button" class="col-md-offset-1 btn">1º Período</button>
+		<script>
+		$( "#button1" ).click(function() {
+ 		$( "t2" ).hide( "drop", { direction: "down" }, "slow" );
+		});
+		</script>
+		<script>
+		$( "#button1" ).click(function() {
+  		$( "t1" ).show( "fold", 1000 );
+		});
+		</script>
+		<button id="button2" type="button" class="btn">2º Período</button>
+		<script>
+		$( "#button2" ).click(function() {
+ 		$( "t1" ).hide( "drop", { direction: "down" }, "slow" );
+		});
+		</script>
+		<script>
+		$( "#button2" ).click(function() {
+  		$( "t2" ).show( "fold", 1000 );
+		});
+		</script>
 		<button type="button" class="btn">3º Período</button>
 		<button type="button" class="btn">4º Período</button>
 		<button type="button" class="btn">5º Período</button>
 		<button type="button" class="btn">6º Período</button>
 		<button type="button" class="btn">7º Período</button>
 		<button type="button" class="btn">8º Período</button>
-<<<<<<< HEAD
 		<button type="button" class="btn">9º Período</button>
 		<button type="button" class="btn">10º Período</button>
-=======
-
->>>>>>> 2bd30c8e553587891240c28d3de1d64e2d773745
 	</div>
 </div>
 </body>
