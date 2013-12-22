@@ -1,123 +1,86 @@
 @(periodos: List[Periodo], disciplinasOfertadas: List[Disciplina]);
 
 @import helper._ 
-@routes.Assets.at("javascripts/script.js");
-@routes.Assets.at("javascripts/jquery-1.9.0.min.js");
+<script type="text/javascript" src="assets/javascripts/js/jquery-1.8.3.js"></script>
+<script type="text/javascript" src="assets/javascripts/js/jquery-ui-1.9.2.custom.js"></script>
 
 <br>
 @main("Meu curso") {
 </br>
+<head>
+	<script type = "text/javascript">
+		$(function(){
+			$("#c2 div").draggable();
+		});
+	</script>
 
-<header class="navbar navbar-inverse navbar-fixed-top bs-docs-nav"
-	role="banner">
-	<div class="navbar-inverse">
-		<div class="container">
-			<div class="navbar-header">
-				<a href="" class="navbar-brand">Home</a>
-			</div>
-			<nav class="collapse navbar-collapse bs-navbar-collapse"
-				role="navigation">
-				<ul class="nav navbar-nav">
-					<li><a href="">Ajuda</a></li>
-					<li><a href="">Dicas</a></li>
-					<li><a href="">Overview</a></li>
-					<li class="active"><a href="">Colabore</a></li>
-				</ul>
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="">Sobre</a></li>
-				</ul>
-			</nav>
-		</div>
-	</div>
-</header>
-<script>$(document).ready(function(){
-	alert("desgraça.com");
-	$('div.disciplina').Sortable({
-				onChange 		: function(){	    			 
-
-					serialEsq = $.SortSerialize('c1');
-
-					serialDir = $.SortSerialize('c2');
-
-
-				},
-
-				onStart : function(){
-					$.iAutoscroller.start(this, document.getElementsByTagName('wrapper'));
-				},
-
-				onStop : function(){
-					$.iAutoscroller.stop();
-				}
-
-			}
-
-		);
-});</script>
-<div class="wrapper" style="height: 100%;">
 	<div class="titulo">
-	<br>
-		<nome-principal>Meu Curso</nome-principal>
-	</br>
-	</div>	
+		<br>
+			<nome-principal>Meu Curso</nome-principal>
+		</br>
+	</div>
+
+</head>
+
+<body>
+<div class="wrapper">
 	<div id="colunas">
-		<div id="c1" class="col-xs-5 col-md-offset-1 coluna">
-			<br></br>
+		<div id="c1" class="coluna">
+			<br></br><br>
                         <periodos>1º Período</periodos>
                         @for(disciplina <- periodos.get(0).getDisciplinas()){
-                        <div class="col-xs-10 col-md-offset-1 disciplina">
+                        <div class="descricaoDeDisciplina">
                                 <nome>@disciplina.getNome()</nome>
                                 <br />
                                 <descricao>@disciplina.getCreditos() creditos</descricao>
                         </div>
-                        } <br></br> <br></br> <br></br> <br></br>
-                        <creditos>Créditos : @periodos.get(0).getTotalDeCreditos()
-                        </creditos>
+                        } 
+            <br></br>
+                        <creditos>Créditos : @periodos.get(0).getTotalDeCreditos()</creditos>
 		</div>
 		
-		<div id="c2" class="col-xs-5 col-md-offset-1 coluna">
-			<br></br>
+		<div id="c2" class="coluna">
+			<br></br><br>
                         <diciplinas-ofertadas>Disciplinas Ofertadas</diciplinas-ofertadas>
-                        @for(disciplina <- disciplinasOfertadas){
-                        <div class="col-xs-10 col-md-offset-1 disciplina">
-                                <nome>@disciplina.getNome()</nome>
+                        @for(disc <- disciplinasOfertadas){
+                        <div class="descricaoDeDisciplina">
+                                <nome>@disc.getNome();</nome>
                                 <br/>
-                                <descricao>@disciplina.getCreditos() creditos</descricao>
+                                <descricao>@disc.getCreditos() creditos</descricao>
                         </div>
                         }
 		</div>
-	
 	</div>
 	<div class="titulo">
 			<nome-principal>Selecione o período</nome-principal>
 	</div>
 	<br/>
 	<div id="disciplinas">
-		<div class="disciplina float-left">
+		<div class="periodo">
 			<nome>1º período</nome><br/>
 		</div>
-	<div class="disciplina float-left">
-		<nome>2º período</nome><br/>
-	</div>
-		<div class="disciplina float-left">
-		<nome>3º período</nome><br/>
-	</div>
-		<div class="disciplina float-left">
-		<nome>4º período</nome><br/>
-	</div>
-		<div class="disciplina float-left">
-		<nome>5º período</nome><br/>
-	</div>
-		<div class="disciplina float-left">
-		<nome>6º período</nome><br/>
-	</div>
-		<div class="disciplina float-left">
-		<nome>7º período</nome><br/>
-	</div>
-		<div class="disciplina float-left">
-		<nome>8º período</nome><br/>
-	</div>	
+		<div class="periodo">
+			<nome>2º período</nome><br/>
+		</div>
+		<div class="periodo">
+			<nome>3º período</nome><br/>
+		</div>
+		<div class="periodo">
+			<nome>4º período</nome><br/>
+		</div>
+		<div class="periodo">
+			<nome>5º período</nome><br/>
+		</div>
+		<div class="periodo">
+			<nome>6º período</nome><br/>
+		</div>
+		<div class="periodo">
+			<nome>7º período</nome><br/>
+		</div>
+		<div class="periodo">
+			<nome>8º período</nome><br/>
+		</div>	
 	</div>
 </div>
-
+</body>
 }

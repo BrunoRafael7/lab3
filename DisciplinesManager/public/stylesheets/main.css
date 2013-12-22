@@ -8,6 +8,10 @@ descricao {
 	font-size: 12px;
 }
 
+.wrapper{
+	height: 100%;
+}
+
 creditos {
 	color: #456A8B;
 	font-size: 20px;
@@ -49,44 +53,58 @@ nome-principal {
 }
 
 #colunas {
-	margin: auto;
+	margin:0 auto;
 	margin-top:50px;
 	margin-bottom:10px;
 	height: 600px;
 	width: 1280px; 
 	display: inherit;
 	border-radius: 10px;
+	ALIGN: CENTER;
 }
 
 .coluna {
 	background-color: #d8e2eb;
 	float: left;
 	height: 600px;
-	width: 148px;
+	width: 600px;
 	margin-left: 10.5px;
 	margin-top: 10px;
 	border-radius: 10px;
 	padding-top: 2px;
 	text-align: center;
+	overflow:auto;
 }
 
 #disciplinas {
-	background-color: #c0c0c0;
+	background-color: none;
 	margin: auto;
 	margin-top: 10px;
-	width: 1200px;
+	width: 1400px;
 	display: inherit;
+	float:left;
 }
 
-.disciplina {
+.descricaoDeDisciplina{
+	width: 480px;
+}
+.disciplina, .periodo{
+	width: 138px;
+}
+
+.disciplina, .descricaoDeDisciplina, .periodo {
 	background-color: #FFFFFF;
 	margin:auto;
 	margin-top:6px;
-	width: 138px;
 	border-radius: 10px;
 	padding-top: 10px;
 	padding-bottom: 10px;
 	text-align: center;
+}
+
+.periodo {
+	margin-left : 20;
+	float:left;
 }
 
 .disciplina:hover {
