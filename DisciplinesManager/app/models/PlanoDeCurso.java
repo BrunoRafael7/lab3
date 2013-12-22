@@ -7,6 +7,7 @@ import java.util.List;
  * CONTROLLER : Classe Plano de curso é a controladora do sistema
  */
 public class PlanoDeCurso {
+	private final int PRIMEIROPERIODO = 1;
 	private final int MINIMO_DE_CREDITOS = 12;
 	private final int MAXIMO_DE_CREDITOS = 28;
 	private List<Periodo> periodos;
@@ -20,7 +21,6 @@ public class PlanoDeCurso {
 	 */
 	
 	private GradeCurricular gradeCurricular;
-	private final int PRIMEIROPERIODO = 1;
 	
 	public PlanoDeCurso(){
 		periodos = new LinkedList<Periodo>();
@@ -91,7 +91,7 @@ public class PlanoDeCurso {
 		return resp;
 	}
 	
-	private boolean estaComCreditosPermitido(List<Disciplina> disciplinas){
+	public boolean estaComQuantidadeDeCreditosPermitido(List<Disciplina> disciplinas){
 		return (this.estaComMinimoDeCreditos(disciplinas) && this.estaComMaximoDeCreditos(disciplinas));
 	}
 }
