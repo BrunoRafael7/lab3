@@ -10,7 +10,14 @@
 <head>
 	<script type = "text/javascript">
 		$(function(){
-			$("#c2 div").draggable();
+			$( "#disciplinasOfertadas, #periodo" ).sortable({
+				connectWith: ".allDisciplines"
+			}).disableSelection();
+			
+			$( "#periodo, #disciplinasOfertadas" ).sortable({
+				connectWith: ".allDisciplines"
+			}).disableSelection();
+
 		});
 	</script>
 
@@ -28,13 +35,15 @@
 		<div id="c1" class="coluna">
 			<br></br><br>
                         <periodos>1º Período</periodos>
-                        @for(disciplina <- periodos.get(0).getDisciplinas()){
-                        <div class="descricaoDeDisciplina">
-                                <nome>@disciplina.getNome()</nome>
-                                <br />
-                                <descricao>@disciplina.getCreditos() creditos</descricao>
-                        </div>
-                        } 
+                        <div id="disciplinasOfertadas" class="allDisciplines">
+	                        @for(disciplina <- periodos.get(0).getDisciplinas()){
+		                        <div class="descricaoDeDisciplina">
+		                                <nome>@disciplina.getNome()</nome>
+		                                <br />
+		                                <descricao>@disciplina.getCreditos() creditos</descricao>
+		                        </div>
+	                        }
+						</div>
             <br></br>
                         <creditos>Créditos : @periodos.get(0).getTotalDeCreditos()</creditos>
 		</div>
@@ -42,13 +51,15 @@
 		<div id="c2" class="coluna">
 			<br></br><br>
                         <diciplinas-ofertadas>Disciplinas Ofertadas</diciplinas-ofertadas>
-                        @for(disc <- disciplinasOfertadas){
-                        <div class="descricaoDeDisciplina">
-                                <nome>@disc.getNome();</nome>
-                                <br/>
-                                <descricao>@disc.getCreditos() creditos</descricao>
-                        </div>
-                        }
+                        <div id="periodo" class="allDisciplines">
+	                        @for(disc <- disciplinasOfertadas){
+		                        <div class="descricaoDeDisciplina">
+		                                <nome>@disc.getNome();</nome>
+		                                <br/>
+		                                <descricao>@disc.getCreditos() creditos</descricao>
+		                        </div>
+	                        }
+						</div>
 		</div>
 	</div>
 	<div class="titulo">
@@ -56,28 +67,28 @@
 	</div>
 	<br/>
 	<div id="disciplinas">
-		<div class="periodo">
+		<div class="periodoButton">
 			<nome>1º período</nome><br/>
 		</div>
-		<div class="periodo">
+		<div class="periodoButton">
 			<nome>2º período</nome><br/>
 		</div>
-		<div class="periodo">
+		<div class="periodoButton">
 			<nome>3º período</nome><br/>
 		</div>
-		<div class="periodo">
+		<div class="periodoButton">
 			<nome>4º período</nome><br/>
 		</div>
-		<div class="periodo">
+		<div class="periodoButton">
 			<nome>5º período</nome><br/>
 		</div>
-		<div class="periodo">
+		<div class="periodoButton">
 			<nome>6º período</nome><br/>
 		</div>
-		<div class="periodo">
+		<div class="periodoButton">
 			<nome>7º período</nome><br/>
 		</div>
-		<div class="periodo">
+		<div class="periodoButton">
 			<nome>8º período</nome><br/>
 		</div>	
 	</div>

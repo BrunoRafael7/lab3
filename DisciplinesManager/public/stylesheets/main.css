@@ -12,6 +12,7 @@ descricao {
 	height: 100%;
 }
 
+
 creditos {
 	color: #456A8B;
 	font-size: 20px;
@@ -102,7 +103,7 @@ nome-principal {
 	text-align: center;
 }
 
-.periodo {
+.periodoButton {
 	margin-left : 20;
 	float:left;
 }
