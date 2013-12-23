@@ -47,7 +47,7 @@
 	<div id="colunas">
 		<div id="c1" class="coluna">
 			<br></br><br>
-                        <periodos>1º Período</periodos>
+                        <periodos id="P1">1º Período</periodos>
                         <div id="disciplinasP1" class="allDisciplines">
 	                        @for(disciplina <- periodos.get(0).getDisciplinas()){
 		                        <div class="descricaoDeDisciplina">
@@ -56,13 +56,9 @@
 		                                <descricao>@disciplina.getCreditos() creditos</descricao>
 		                        </div>
 	                        }
+                        <creditos id="credP1">Créditos : @periodos.get(0).getTotalDeCreditos()</creditos>
 						</div>
-                        <creditos>Créditos : @periodos.get(0).getTotalDeCreditos()</creditos>
-		</div>
-		
-		<div id="c2" class="coluna">
-			<br></br><br>
-                        <periodos>2º Período</periodos>
+						<periodos id="P2">2º Período</periodos>
                         <div id="disciplinasP2" class="allDisciplines">
                          @for(disciplina <- periodos.get(0).getDisciplinas()){
 		                        <div class="descricaoDeDisciplina">
@@ -72,9 +68,11 @@
 		                        </div>
 	                        }
 						
-                        <creditos>Créditos : @periodos.get(0).getTotalDeCreditos()</creditos>
+                        <creditos id="credP2">Créditos : @periodos.get(0).getTotalDeCreditos()</creditos>
                         </div>
 		</div>
+		
+		
 		
 		<div id="c3" class="coluna">
 			<br></br><br>
@@ -97,20 +95,30 @@
 	<div id="disciplinas">
 		<button id="button1" type="button" class="col-md-offset-1 btn">1º Período</button>
 		<script>
- 		$( "#c2" ).hide( "fast" );
+ 		$( "#disciplinasP2" ).hide( "fast" );
+ 		$( "#P2" ).hide( "fast" );
+ 		$( "#credP2" ).hide( "fast" );
 		</script>
 		<script>
 		$( "#button1" ).click(function() {
- 		$( "#c2" ).hide( "slow" );
-  		$( "#c1" ).show( "fold", 1000 );
+ 		$( "#disciplinasP2" ).hide( "slow" );
+ 		$( "#P2" ).hide( "slow" );
+ 		$( "#credP2" ).hide( "slow" );
+  		$( "#disciplinasP1" ).show( "fold", 1000 );
+  		$( "#P1" ).show( "fold", 1000 );
+  		$( "#credP1" ).show( "fold", 1000 );
 		});
 		</script>
 		
 		<button id="button2" type="button" class="btn">2º Período</button>
 		<script>
 		$( "#button2" ).click(function() {
- 		$( "#c1" ).hide( "slow" );
-  		$( "#c2" ).show( "fold", 1000 );
+ 		$( "#disciplinasP1" ).hide( "slow" );
+ 		$( "#P1" ).hide( "slow" );
+ 		$( "#credP1" ).hide( "slow" );
+  		$( "#disciplinasP2" ).show( "fold", 1000 );
+  		$( "#P2" ).show( "fold", 1000 );
+  		$( "#credP2" ).show( "fold", 1000 );
 		});
 		</script>
 	
