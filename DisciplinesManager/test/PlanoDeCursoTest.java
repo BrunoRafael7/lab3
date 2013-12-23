@@ -73,8 +73,8 @@ public class PlanoDeCursoTest {
 	
 	@Test
 	public void deveVerificarSeOsPreRequisitosEstaoOK(){ 
-		List<Periodo> primeiroPeriodo = planoDeCurso.getPeriodos();
-		
+		List<Periodo> periodos = planoDeCurso.getPeriodos();
+
 		Disciplina d1 =  planoDeCurso.getAllDisciplines().get(0); //Teoria_dos_Grafos - 2 Créditos
 		Disciplina d2 =  planoDeCurso.getAllDisciplines().get(1); //Banco_de_Dados_II - 4 Créditos
 		Disciplina d3 =  planoDeCurso.getAllDisciplines().get(2); //Projeto_em_Computação_I - 4 Créditos
@@ -84,41 +84,46 @@ public class PlanoDeCursoTest {
 		Disciplina d7 =  planoDeCurso.getAllDisciplines().get(6); //Informática_e_Sociedade - 2 Créditos
 		Disciplina d8 =  planoDeCurso.getAllDisciplines().get(8); //Optativa_11 - 4 Créditos
 		Disciplina d9 =  planoDeCurso.getAllDisciplines().get(9); //Teoria_da_Computação - 4 Créditos
+		Disciplina d10 =  planoDeCurso.getAllDisciplines().get(12); //Fundamentos_de_Física_Clássica
 		
-		assertTrue(planoDeCurso.verificaSePreRequisitosEstaoOK(d1, primeiroPeriodo)); 
+		assertTrue(planoDeCurso.verificaSePreRequisitosEstaoOK(d1, periodos)); 
 
-		assertFalse(planoDeCurso.verificaSePreRequisitosEstaoOK(d2, primeiroPeriodo));
-		assertFalse(planoDeCurso.verificaSePreRequisitosEstaoOK(d3, primeiroPeriodo)); 
-		assertFalse(planoDeCurso.verificaSePreRequisitosEstaoOK(d4, primeiroPeriodo)); 
+		assertFalse(planoDeCurso.verificaSePreRequisitosEstaoOK(d2, periodos));
+		assertFalse(planoDeCurso.verificaSePreRequisitosEstaoOK(d3, periodos)); 
+		assertFalse(planoDeCurso.verificaSePreRequisitosEstaoOK(d4, periodos)); 
 		
-		assertTrue(planoDeCurso.verificaSePreRequisitosEstaoOK(d5, primeiroPeriodo));
-		assertTrue(planoDeCurso.verificaSePreRequisitosEstaoOK(d6, primeiroPeriodo));
-		assertTrue(planoDeCurso.verificaSePreRequisitosEstaoOK(d7, primeiroPeriodo));
-		assertTrue(planoDeCurso.verificaSePreRequisitosEstaoOK(d8, primeiroPeriodo));
+		assertTrue(planoDeCurso.verificaSePreRequisitosEstaoOK(d5, periodos));
+		assertTrue(planoDeCurso.verificaSePreRequisitosEstaoOK(d6, periodos));
+		assertTrue(planoDeCurso.verificaSePreRequisitosEstaoOK(d7, periodos));
+		assertTrue(planoDeCurso.verificaSePreRequisitosEstaoOK(d8, periodos));
 		
-		assertFalse(planoDeCurso.verificaSePreRequisitosEstaoOK(d9, primeiroPeriodo)); 
+		assertFalse(planoDeCurso.verificaSePreRequisitosEstaoOK(d9, periodos)); 
+		
+		assertTrue(planoDeCurso.verificaSePreRequisitosEstaoOK(d10, periodos)); 
 	}
 	
 	@Test
-	public void deveCriarProximoPeriodo(){
+	public void deveAdicionarDisciplinasAPeriodo(){
 		List<Disciplina> disciplinaPrimeiroPeriodo = planoDeCurso.getPeriodos().get(0).getDisciplinas();
 		List<Disciplina> disciplinas = new ArrayList<Disciplina>();
+
 		Disciplina d1 =  planoDeCurso.getAllDisciplines().get(12); //Fundamentos_de_Física_Clássica
 		Disciplina d2 =  planoDeCurso.getAllDisciplines().get(14); //Cálculo_Diferencial_e_Integral_II
 		Disciplina d3 =  planoDeCurso.getAllDisciplines().get(4); //Matemática_Discreta - 4 Créditos
 		Disciplina d4 =  planoDeCurso.getAllDisciplines().get(0); //Teoria_dos_Grafos - 2 Créditos
+		
+		assertEquals(disciplinaPrimeiroPeriodo, planoDeCurso.getPeriodos().get(0).getDisciplinas());	
 		
 		disciplinas.add(d1);
 		disciplinas.add(d2);
 		disciplinas.add(d3);
 		disciplinas.add(d4);
 		
-		assertEquals(1, planoDeCurso.getPeriodos().size());
-		assertEquals(disciplinaPrimeiroPeriodo, planoDeCurso.getPeriodos().get(0).getDisciplinas());
-		
-		planoDeCurso.criaProximoPeriodo(disciplinas);
-		
-		assertEquals(2, planoDeCurso.getPeriodos().size());
+		planoDeCurso.adicionaDisciplinaAPeriodo(d1, 2);
+		planoDeCurso.adicionaDisciplinaAPeriodo(d2, 2);
+		planoDeCurso.adicionaDisciplinaAPeriodo(d3, 2);
+		planoDeCurso.adicionaDisciplinaAPeriodo(d4, 2);
+			
 		assertEquals(disciplinas, planoDeCurso.getPeriodos().get(1).getDisciplinas());
 	}
 }

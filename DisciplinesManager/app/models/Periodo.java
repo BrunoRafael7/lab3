@@ -17,6 +17,10 @@ public class Periodo {
 		disciplinas = new LinkedList<Disciplina>();
 	}
 	
+	public void adicionaUmaDisciplina(Disciplina disciplina){
+		disciplinas.add(disciplina);
+	}
+	
 	public Periodo(List<Disciplina> disciplinas){
 		this.disciplinas = disciplinas;
 		for(Disciplina dsp : disciplinas){

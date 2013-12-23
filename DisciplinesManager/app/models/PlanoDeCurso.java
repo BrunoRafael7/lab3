@@ -8,7 +8,8 @@ import java.util.List;
  */
 public class PlanoDeCurso {
 	private final int PRIMEIRO_PERIODO = 1;
-	private final int MINIMO_DE_CREDITOS = 12;
+	private final int TOTAL_DE_PERIODOS = 10;
+	private final int MINIMO_DE_CREDITOS = 14;
 	private final int MAXIMO_DE_CREDITOS = 28;
 	private List<Periodo> periodos;
 	
@@ -25,15 +26,24 @@ public class PlanoDeCurso {
 	public PlanoDeCurso(){
 		periodos = new LinkedList<Periodo>();
 		gradeCurricular = new GradeCurricular();
-		periodos.add(new Periodo(gradeCurricular.getAllDisciplines(PRIMEIRO_PERIODO))); 
+		periodos.add(new Periodo(gradeCurricular.getAllDisciplines(PRIMEIRO_PERIODO)));
+		this.adicionaPeriodosVazios();
+	}
+	
+	private void adicionaPeriodosVazios(){
+		for(int i = 1; i < TOTAL_DE_PERIODOS; i++){ 
+			periodos.add(new Periodo());
+		}
+	}
+	
+	public void adicionaDisciplinaAPeriodo(Disciplina disciplina, int periodo){
+		if(this.verificaSePreRequisitosEstaoOK(disciplina, this.getPeriodos())){
+			periodos.get(periodo - 1).adicionaUmaDisciplina(disciplina);
+		}
 	}
 	
 	public List<Periodo> getPeriodos() {
 		return periodos;
-	}
-	
-	public void criaProximoPeriodo(List<Disciplina> disciplinas){
-		periodos.add(new Periodo(disciplinas));
 	}
 	
 	public List<Disciplina> getAllDisciplines(){
@@ -43,12 +53,12 @@ public class PlanoDeCurso {
 	public boolean verificaSePreRequisitosEstaoOK(Disciplina disciplina, List<Periodo> listaPeriodos){
         int contaPreRequisitos = 0;
         List<String> preRequisito = disciplina.getPreRequisitos();
-        //System.out.println("Disciplina: " + disciplina.getNome() + " Tamanho: " + preRequisito.size() + " lista: " + preRequisito.toString());
         if(!(preRequisito.isEmpty())){ //SO ENTRA SE TIVER PRE-REQUISITO
         	for(Periodo periodo : listaPeriodos){
         		for(Disciplina disciplinaPeriodo : periodo.getDisciplinas()){
         			if(preRequisito.contains(disciplinaPeriodo.getNome())){
         				contaPreRequisitos ++;
+        				
         			}
         		}
         	}
