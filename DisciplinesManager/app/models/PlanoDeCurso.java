@@ -32,6 +32,10 @@ public class PlanoDeCurso {
 		return periodos;
 	}
 	
+	public void criaProximoPeriodo(){
+		periodos.add(new Periodo());
+	}
+	
 	public void criaProximoPeriodo(List<Disciplina> disciplinas){
 		periodos.add(new Periodo(disciplinas));
 	}

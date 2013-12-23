@@ -16,6 +16,6 @@ public class Application extends Controller{
 	private static PlanoDeCurso planoDeCurso = new PlanoDeCurso();
 	
 	public static Result index(){
-		return ok(views.html.index.render(planoDeCurso.getPeriodos(), planoDeCurso.getAllDisciplines()));
+		return ok(views.html.index.render(planoDeCurso.getPeriodos(), planoDeCurso.getAllDisciplines(), planoDeCurso));
 	}
 }
