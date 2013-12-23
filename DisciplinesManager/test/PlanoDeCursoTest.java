@@ -10,6 +10,8 @@ import models.PlanoDeCurso;
 import org.junit.Before;
 import org.junit.Test;
 
+import scala.actors.threadpool.Arrays;
+
 
 public class PlanoDeCursoTest {
 	
@@ -86,7 +88,6 @@ public class PlanoDeCursoTest {
 		
 		
 		//TESTES TEM BUG PARA DISCIPLINAS QUE NAO TEM PRE REQUISITO ([]) ELE DIZ QUE A LISTA NAO TÁ VAZIA
-		
 		assertTrue(planoDeCurso.verificaSePreRequisitosEstaoOK(d1, primeiroPeriodo)); 
 		//assertTrue(planoDeCurso.verificaSePreRequisitosEstaoOK(d2, primeiroPeriodo)); //BUGADO
 		
