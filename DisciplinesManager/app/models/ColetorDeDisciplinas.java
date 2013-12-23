@@ -18,9 +18,10 @@ public class ColetorDeDisciplinas {
 	private List<Disciplina> disciplinasColetadas;
 	
 	public ColetorDeDisciplinas(){
-		disciplinasColetadas = new LinkedList<Disciplina>();
+		setDisciplinasColetadas(new LinkedList<Disciplina>());
 	}
 	
+	@SuppressWarnings("resource")
 	public List<Disciplina> coletar(){
 		try {
 			BufferedReader reader = new BufferedReader(
@@ -30,13 +31,13 @@ public class ColetorDeDisciplinas {
 			);
 			while(reader.ready()){
 				String[] line = reader.readLine().split("-");
-				disciplinasColetadas.add(criarDisciplina(line));
+				this.disciplinasColetadas.add(criarDisciplina(line));
 			}
 			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return disciplinasColetadas;
+		return getDisciplinasColetadas();
 	}
 
 	private Disciplina criarDisciplina(String[] line) {
@@ -65,5 +66,13 @@ public class ColetorDeDisciplinas {
 			}
 		}
 		return preRequisitos;
+	}
+
+	public List<Disciplina> getDisciplinasColetadas() {
+		return disciplinasColetadas;
+	}
+
+	private void setDisciplinasColetadas(List<Disciplina> disciplinasColetadas) {
+		this.disciplinasColetadas = disciplinasColetadas;
 	}	
 }

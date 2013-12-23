@@ -6,6 +6,12 @@ import play.db.ebean.Model;
 
 public class Disciplina extends Model{
 	
+	@Override
+	public String toString() {
+		return "Disciplina [nome=" + nome + ", preRequisitos=" + preRequisitos
+				+ ", creditos=" + creditos + ", periodo=" + periodo + "]";
+	}
+
 	private static final long serialVersionUID = 1L;
 	
 	private String nome;
