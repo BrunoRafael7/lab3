@@ -85,17 +85,16 @@ public class PlanoDeCursoTest {
 		Disciplina d8 =  planoDeCurso.getAllDisciplines().get(8); //Optativa_11 - 4 Créditos
 		Disciplina d9 =  planoDeCurso.getAllDisciplines().get(9); //Teoria_da_Computação - 4 Créditos
 		
-		//TESTES TEM BUG PARA DISCIPLINAS QUE NAO TEM PRE REQUISITO ([]) ELE DIZ QUE A LISTA NAO TÁ VAZIA
 		assertTrue(planoDeCurso.verificaSePreRequisitosEstaoOK(d1, primeiroPeriodo)); 
 
 		assertFalse(planoDeCurso.verificaSePreRequisitosEstaoOK(d2, primeiroPeriodo));
 		assertFalse(planoDeCurso.verificaSePreRequisitosEstaoOK(d3, primeiroPeriodo)); 
 		assertFalse(planoDeCurso.verificaSePreRequisitosEstaoOK(d4, primeiroPeriodo)); 
 		
-		//assertTrue(planoDeCurso.verificaSePreRequisitosEstaoOK(d5, primeiroPeriodo)); //BUGADO 
-		//assertTrue(planoDeCurso.verificaSePreRequisitosEstaoOK(d6, primeiroPeriodo)); //BUGADO
-		//assertTrue(planoDeCurso.verificaSePreRequisitosEstaoOK(d7, primeiroPeriodo)); //BUGADO
-		//assertTrue(planoDeCurso.verificaSePreRequisitosEstaoOK(d8, primeiroPeriodo)); //BUGADO
+		assertTrue(planoDeCurso.verificaSePreRequisitosEstaoOK(d5, primeiroPeriodo));
+		assertTrue(planoDeCurso.verificaSePreRequisitosEstaoOK(d6, primeiroPeriodo));
+		assertTrue(planoDeCurso.verificaSePreRequisitosEstaoOK(d7, primeiroPeriodo));
+		assertTrue(planoDeCurso.verificaSePreRequisitosEstaoOK(d8, primeiroPeriodo));
 		
 		assertFalse(planoDeCurso.verificaSePreRequisitosEstaoOK(d9, primeiroPeriodo)); 
 	}

@@ -58,10 +58,11 @@ public class ColetorDeDisciplinas {
 		line = line.replace("]", "");
 
 		String[] nomesDosPreRequisitos = line.split(",");
-		
 		List<String> preRequisitos = new LinkedList<String>();
 		for(String nome : nomesDosPreRequisitos){
-			preRequisitos.add(nome);
+			if(!(nome.equals(""))){ //NAO ADICIONA STRING VAZIA NOS PRE-REQUISITOS
+				preRequisitos.add(nome);
+			}
 		}
 		return preRequisitos;
 	}	
