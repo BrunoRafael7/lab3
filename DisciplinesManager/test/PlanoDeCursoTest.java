@@ -10,7 +10,6 @@ import models.PlanoDeCurso;
 import org.junit.Before;
 import org.junit.Test;
 
-import scala.actors.threadpool.Arrays;
 
 
 public class PlanoDeCursoTest {
@@ -46,14 +45,14 @@ public class PlanoDeCursoTest {
 		
 		List<Disciplina> disciplinas2 = new ArrayList<Disciplina>();
 		Disciplina d1 =  planoDeCurso.getAllDisciplines().get(0); //Teoria_dos_Grafos - 2 Créditos
-		Disciplina d2 =  planoDeCurso.getAllDisciplines().get(1); //Leitura_e_Produção_de_Texto - 4 Créditos
-		Disciplina d3 =  planoDeCurso.getAllDisciplines().get(2); //Banco_de_Dados_II - 4 Créditos
-		Disciplina d4 =  planoDeCurso.getAllDisciplines().get(3); //Projeto_em_Computação_I - 4 Créditos
-		Disciplina d5 =  planoDeCurso.getAllDisciplines().get(4); //Compiladores - 4 Créditos
-		Disciplina d6 =  planoDeCurso.getAllDisciplines().get(5); //Álgebra_Vetorial_e_Geometria_Analítica - 4 Créditos
-		Disciplina d7 =  planoDeCurso.getAllDisciplines().get(6); //Matemática_Discreta - 4 Créditos
-		Disciplina d8 =  planoDeCurso.getAllDisciplines().get(8); //Informática_e_Sociedade - 2 Créditos
-		Disciplina d9 =  planoDeCurso.getAllDisciplines().get(9); //Bancos_de_Dados_I - 4 Créditos
+		Disciplina d2 =  planoDeCurso.getAllDisciplines().get(1); //Banco_de_Dados_II - 4 Créditos
+		Disciplina d3 =  planoDeCurso.getAllDisciplines().get(2); //Projeto_em_Computação_I - 4 Créditos
+		Disciplina d4 =  planoDeCurso.getAllDisciplines().get(3); //Compiladores - 4 Créditos
+		Disciplina d5 =  planoDeCurso.getAllDisciplines().get(4); //Matemática_Discreta - 4 Créditos
+		Disciplina d6 =  planoDeCurso.getAllDisciplines().get(5); //Optativa_10 - 4 Créditos
+		Disciplina d7 =  planoDeCurso.getAllDisciplines().get(6); //Informática_e_Sociedade - 2 Créditos
+		Disciplina d8 =  planoDeCurso.getAllDisciplines().get(8); //Optativa_11 - 4 Créditos
+		Disciplina d9 =  planoDeCurso.getAllDisciplines().get(9); //Teoria_da_Computação - 4 Créditos
 		
 		//28 Créditos
 		disciplinas2.add(d1);
@@ -77,29 +76,27 @@ public class PlanoDeCursoTest {
 		List<Periodo> primeiroPeriodo = planoDeCurso.getPeriodos();
 		
 		Disciplina d1 =  planoDeCurso.getAllDisciplines().get(0); //Teoria_dos_Grafos - 2 Créditos
-		Disciplina d2 =  planoDeCurso.getAllDisciplines().get(1); //Leitura_e_Produção_de_Texto - 4 Créditos
-		Disciplina d3 =  planoDeCurso.getAllDisciplines().get(2); //Banco_de_Dados_II - 4 Créditos
-		Disciplina d4 =  planoDeCurso.getAllDisciplines().get(3); //Projeto_em_Computação_I - 4 Créditos
-		Disciplina d5 =  planoDeCurso.getAllDisciplines().get(4); //Compiladores - 4 Créditos
-		Disciplina d6 =  planoDeCurso.getAllDisciplines().get(5); //Álgebra_Vetorial_e_Geometria_Analítica - 4 Créditos
-		Disciplina d7 =  planoDeCurso.getAllDisciplines().get(6); //Matemática_Discreta - 4 Créditos
-		Disciplina d8 =  planoDeCurso.getAllDisciplines().get(8); //Informática_e_Sociedade - 2 Créditos
-		Disciplina d9 =  planoDeCurso.getAllDisciplines().get(9); //Bancos_de_Dados_I - 4 Créditos
-		
+		Disciplina d2 =  planoDeCurso.getAllDisciplines().get(1); //Banco_de_Dados_II - 4 Créditos
+		Disciplina d3 =  planoDeCurso.getAllDisciplines().get(2); //Projeto_em_Computação_I - 4 Créditos
+		Disciplina d4 =  planoDeCurso.getAllDisciplines().get(3); //Compiladores - 4 Créditos
+		Disciplina d5 =  planoDeCurso.getAllDisciplines().get(4); //Matemática_Discreta - 4 Créditos
+		Disciplina d6 =  planoDeCurso.getAllDisciplines().get(5); //Optativa_10 - 4 Créditos
+		Disciplina d7 =  planoDeCurso.getAllDisciplines().get(6); //Informática_e_Sociedade - 2 Créditos
+		Disciplina d8 =  planoDeCurso.getAllDisciplines().get(8); //Optativa_11 - 4 Créditos
+		Disciplina d9 =  planoDeCurso.getAllDisciplines().get(9); //Teoria_da_Computação - 4 Créditos
 		
 		//TESTES TEM BUG PARA DISCIPLINAS QUE NAO TEM PRE REQUISITO ([]) ELE DIZ QUE A LISTA NAO TÁ VAZIA
 		assertTrue(planoDeCurso.verificaSePreRequisitosEstaoOK(d1, primeiroPeriodo)); 
-		//assertTrue(planoDeCurso.verificaSePreRequisitosEstaoOK(d2, primeiroPeriodo)); //BUGADO
-		
+
+		assertFalse(planoDeCurso.verificaSePreRequisitosEstaoOK(d2, primeiroPeriodo));
 		assertFalse(planoDeCurso.verificaSePreRequisitosEstaoOK(d3, primeiroPeriodo)); 
 		assertFalse(planoDeCurso.verificaSePreRequisitosEstaoOK(d4, primeiroPeriodo)); 
-		assertFalse(planoDeCurso.verificaSePreRequisitosEstaoOK(d5, primeiroPeriodo)); 
 		
+		//assertTrue(planoDeCurso.verificaSePreRequisitosEstaoOK(d5, primeiroPeriodo)); //BUGADO 
 		//assertTrue(planoDeCurso.verificaSePreRequisitosEstaoOK(d6, primeiroPeriodo)); //BUGADO
 		//assertTrue(planoDeCurso.verificaSePreRequisitosEstaoOK(d7, primeiroPeriodo)); //BUGADO
 		//assertTrue(planoDeCurso.verificaSePreRequisitosEstaoOK(d8, primeiroPeriodo)); //BUGADO
 		
 		assertFalse(planoDeCurso.verificaSePreRequisitosEstaoOK(d9, primeiroPeriodo)); 
-		
 	}
 }

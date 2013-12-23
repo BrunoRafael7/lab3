@@ -43,13 +43,11 @@ public class PlanoDeCurso {
 	public boolean verificaSePreRequisitosEstaoOK(Disciplina disciplina, List<Periodo> listaPeriodos){
         int contaPreRequisitos = 0;
         List<String> preRequisito = disciplina.getPreRequisitos();
-        if(preRequisito.size() > 0){ //SO ENTRA SE TIVER PRE-REQUISITO
+        //System.out.println("Disciplina: " + disciplina.getNome() + " Tamanho: " + preRequisito.size() + " lista: " + preRequisito.toString());
+        if(!(preRequisito.isEmpty())){ //SO ENTRA SE TIVER PRE-REQUISITO
         	for(Periodo periodo : listaPeriodos){
         		for(Disciplina disciplinaPeriodo : periodo.getDisciplinas()){
-        			System.out.println("PRE-REQUISITO: " + preRequisito.toString());
-        			System.out.println("DISCIPLINA: " + disciplinaPeriodo.getNome());
         			if(preRequisito.contains(disciplinaPeriodo.getNome())){
-        				System.out.println("ESTA CONTANDO");
         				contaPreRequisitos ++;
         			}
         		}
