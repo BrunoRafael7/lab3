@@ -98,4 +98,27 @@ public class PlanoDeCursoTest {
 		
 		assertFalse(planoDeCurso.verificaSePreRequisitosEstaoOK(d9, primeiroPeriodo)); 
 	}
+	
+	@Test
+	public void deveCriarProximoPeriodo(){
+		List<Disciplina> disciplinaPrimeiroPeriodo = planoDeCurso.getPeriodos().get(0).getDisciplinas();
+		List<Disciplina> disciplinas = new ArrayList<Disciplina>();
+		Disciplina d1 =  planoDeCurso.getAllDisciplines().get(12); //Fundamentos_de_Física_Clássica
+		Disciplina d2 =  planoDeCurso.getAllDisciplines().get(14); //Cálculo_Diferencial_e_Integral_II
+		Disciplina d3 =  planoDeCurso.getAllDisciplines().get(4); //Matemática_Discreta - 4 Créditos
+		Disciplina d4 =  planoDeCurso.getAllDisciplines().get(0); //Teoria_dos_Grafos - 2 Créditos
+		
+		disciplinas.add(d1);
+		disciplinas.add(d2);
+		disciplinas.add(d3);
+		disciplinas.add(d4);
+		
+		assertEquals(1, planoDeCurso.getPeriodos().size());
+		assertEquals(disciplinaPrimeiroPeriodo, planoDeCurso.getPeriodos().get(0).getDisciplinas());
+		
+		planoDeCurso.criaProximoPeriodo(disciplinas);
+		
+		assertEquals(2, planoDeCurso.getPeriodos().size());
+		assertEquals(disciplinas, planoDeCurso.getPeriodos().get(1).getDisciplinas());
+	}
 }
