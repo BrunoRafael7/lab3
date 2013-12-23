@@ -59,7 +59,7 @@
 						</div>
 						<periodos id="P2">2º Período</periodos>
                         <div id="disciplinasP2" class="allDisciplines">
-                         @plano.criaProximoPeriodo()
+
                          @for(disciplina <- periodos.get(1).getDisciplinas()){
 		                        <div class="descricaoDeDisciplina">
 		                                <nome>@disciplina.getNome()</nome>
