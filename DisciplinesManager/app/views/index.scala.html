@@ -3,7 +3,20 @@
 @import helper._ 
 <script type="text/javascript" src="assets/javascripts/js/jquery-1.8.3.js"></script>
 <script type="text/javascript" src="assets/javascripts/js/jquery-ui-1.9.2.custom.js"></script>
+<script type='text/javascript' src="@routes.Assets.at("javascripts/funcoes.js")"></script>
 
+<script>
+function attPeriodo(periodo){
+	$.ajax({
+        type: "POST",
+        url: "/attPeriodo/" + periodo,
+        data: "",
+        success: function(){
+              window.location = "/";
+        }
+      });
+}
+</script>
 <br>
 @main("Meu curso") {
 </br>
@@ -23,7 +36,7 @@
 		<div class="coluna">
 			<br></br><br>
 						<div id="1">
-                        <periodos>1º Período</periodos>
+                        <periodos>@plano.getPeriodoAtual()º Período</periodos>
                         <div class="allDisciplines">
 	                        @for(disciplina <- periodos.get(0).getDisciplinas()){
 		                        <div class="descricaoDeDisciplina">
@@ -183,167 +196,22 @@
 	</div>
 	<div id="disciplinas">
 		<script>
-			$("#2").hide("fast");
-			$("#3").hide("fast");
-			$("#4").hide("fast");
-			$("#5").hide("fast");
-			$("#6").hide("fast");
-			$("#7").hide("fast");
-			$("#8").hide("fast");
-			$("#9").hide("fast");
-			$("#10").hide("fast");
+		for(var i=1; i<11; i++){
+			if (i != @plano.getPeriodoAtual()){
+			$("#"+i).hide("fast");
+			}
+		}
 		</script>
-		<button id="button1" type="button" class="col-md-offset-1 btn">1º Período</button>
-				<script>
-                        $("#button1").click(function() {
-                          	$("#2").hide("fast");
-                			$("#3").hide("fast");
-                			$("#4").hide("fast");
-                			$("#5").hide("fast");
-                			$("#6").hide("fast");
-                			$("#7").hide("fast");
-                			$("#8").hide("fast");
-                			$("#9").hide("fast");
-                			$("#10").hide("fast");
-                            $("#1").show("fold", 1000);
-                        });
-                </script>
-		<button id="button2" type="button" class="btn">2º Período</button>
-				<script>
-                        $("#button2").click(function() {
-                        	$("#1").hide("fast");
-                			$("#3").hide("fast");
-                			$("#4").hide("fast");
-                			$("#5").hide("fast");
-                			$("#6").hide("fast");
-                			$("#7").hide("fast");
-                			$("#8").hide("fast");
-                			$("#9").hide("fast");
-                			$("#10").hide("fast");
-                            $("#2").show("fold", 1000);
-                        });
-                </script>
-		<button id="button3" type="button" class="btn">3º Período</button>
-				<script>
-                        $("#button3").click(function() {
-                        	$periodo=3
-                        	$("#2").hide("fast");
-                			$("#1").hide("fast");
-                			$("#4").hide("fast");
-                			$("#5").hide("fast");
-                			$("#6").hide("fast");
-                			$("#7").hide("fast");
-                			$("#8").hide("fast");
-                			$("#9").hide("fast");
-                			$("#10").hide("fast");
-                            $("#3").show("fold", 1000);
-                        });
-                </script>
-		<button id="button4" type="button" class="btn">4º Período</button>
-				<script>
-                        $("#button4").click(function() {
-                        	$("#2").hide("fast");
-                			$("#3").hide("fast");
-                			$("#1").hide("fast");
-                			$("#5").hide("fast");
-                			$("#6").hide("fast");
-                			$("#7").hide("fast");
-                			$("#8").hide("fast");
-                			$("#9").hide("fast");
-                			$("#10").hide("fast");
-                            $("#4").show("fold", 1000);
-                        });
-                </script>
-		<button id="button5" type="button" class="btn">5º Período</button>
-				<script>
-                        $("#button5").click(function() {
-                			$("#1").hide("fast");
-                        	$("#2").hide("fast");
-                			$("#3").hide("fast");
-                			$("#4").hide("fast");
-                			$("#6").hide("fast");
-                			$("#7").hide("fast");
-                			$("#8").hide("fast");
-                			$("#9").hide("fast");
-                			$("#10").hide("fast");
-                            $("#5").show("fold", 1000);
-                        });
-                </script>
-		<button id="button6" type="button" class="btn">6º Período</button>
-				<script>
-                        $("#button6").click(function() {
-                			$("#1").hide("fast");
-                        	$("#2").hide("fast");
-                			$("#3").hide("fast");
-                			$("#4").hide("fast");
-                			$("#5").hide("fast");
-                			$("#7").hide("fast");
-                			$("#8").hide("fast");
-                			$("#9").hide("fast");
-                			$("#10").hide("fast");
-                            $("#6").show("fold", 1000);
-                        });
-                </script>
-		<button id="button7" type="button" class="btn">7º Período</button>
-				<script>
-                        $("#button7").click(function() {
-                			$("#1").hide("fast");
-                        	$("#2").hide("fast");
-                			$("#3").hide("fast");
-                			$("#4").hide("fast");
-                			$("#5").hide("fast");
-                			$("#6").hide("fast");
-                			$("#8").hide("fast");
-                			$("#9").hide("fast");
-                			$("#10").hide("fast");
-                            $("#7").show("fold", 1000);
-                        });
-                </script>
-		<button id="button8" type="button" class="btn">8º Período</button>
-				<script>
-                        $("#button8").click(function() {
-                			$("#1").hide("fast");
-                        	$("#2").hide("fast");
-                			$("#3").hide("fast");
-                			$("#4").hide("fast");
-                			$("#5").hide("fast");
-                			$("#6").hide("fast");
-                			$("#7").hide("fast");
-                			$("#9").hide("fast");
-                			$("#10").hide("fast");
-                            $("#8").show("fold", 1000);
-                        });
-                </script>
-		<button id="button9" type="button" class="btn">9º Período</button>
-				<script>
-                        $("#button9").click(function() {
-                			$("#1").hide("fast");
-                        	$("#2").hide("fast");
-                			$("#3").hide("fast");
-                			$("#4").hide("fast");
-                			$("#5").hide("fast");
-                			$("#6").hide("fast");
-                			$("#7").hide("fast");
-                			$("#8").hide("fast");
-                			$("#10").hide("fast");
-                            $("#9").show("fold", 1000);
-                        });
-                </script>
+		<button id="button1" type="button" onclick="attPeriodo(1)" class="col-md-offset-1 btn">1º Período</button>
+		<button id="button2" type="button" class="btn" onclick="attPeriodo(2)">2º Período</button>
+		<button id="button3" type="button" class="btn" onclick="attPeriodo(3)">3º Período</button>
+		<button id="button4" type="button" class="btn" onclick="attPeriodo(4)">4º Período</button>
+		<button id="button5" type="button" class="btn" onclick="attPeriodo(5)">5º Período</button>
+		<button id="button6" type="button" class="btn" onclick="attPeriodo(6)">6º Período</button>
+		<button id="button7" type="button" class="btn" onclick="attPeriodo(7)">7º Período</button>
+		<button id="button8" type="button" class="btn" onclick="attPeriodo(8)">8º Período</button>
+		<button id="button9" type="button" class="btn" onclick="attPeriodo(9)">9º Período</button>
 		<button id="button10" type="button" class="btn" onclick="attPeriodo(10)" >10º Período</button>
-				<script>
-                        $("#button10").click(function(attPeriodo(10)) {
-                			$("#1").hide("fast");
-                        	$("#2").hide("fast");
-                			$("#3").hide("fast");
-                			$("#4").hide("fast");
-                			$("#5").hide("fast");
-                			$("#6").hide("fast");
-                			$("#7").hide("fast");
-                			$("#8").hide("fast");
-                			$("#9").hide("fast");
-                            $("#10").show("fold", 1000);
-                        });
-                </script>
 		
 	</div>
 </body>

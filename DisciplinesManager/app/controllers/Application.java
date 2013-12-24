@@ -19,7 +19,7 @@ public class Application extends Controller{
 	}
 	
 	public static Result attPeriodo(int periodo) {
-        planoDeCurso.setPeriodoAtual(periodo);;
+        planoDeCurso.setPeriodoAtual(periodo);
         return redirect(routes.Application.index());
 }
 	
