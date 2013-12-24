@@ -14,8 +14,14 @@ import play.mvc.Result;
 public class Application extends Controller{
 	
 	private static PlanoDeCurso planoDeCurso = new PlanoDeCurso();
-	
 	public static Result index(){
 		return ok(views.html.index.render(planoDeCurso.getPeriodos(), planoDeCurso.getAllDisciplines(), planoDeCurso));
 	}
+	
+	public static Result attPeriodo(int periodo) {
+        planoDeCurso.setPeriodoAtual(periodo);;
+        return redirect(routes.Application.index());
 }
+	
+}
+

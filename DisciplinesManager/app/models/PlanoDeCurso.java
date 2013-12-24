@@ -12,7 +12,7 @@ public class PlanoDeCurso {
         private final int MINIMO_DE_CREDITOS = 14;
         private final int MAXIMO_DE_CREDITOS = 28;
         private List<Periodo> periodos;
-        
+        private int periodoAtual =1;
         /*
          * CREATOR : 
          * 1 - Grade curricular será referenciada em Plano de curso,
@@ -100,4 +100,12 @@ public class PlanoDeCurso {
         public boolean estaComQuantidadeDeCreditosPermitido(List<Disciplina> disciplinas){
                 return (this.estaComMinimoDeCreditos(disciplinas) && this.estaComMaximoDeCreditos(disciplinas));
         }
+
+		public int getPeriodoAtual() {
+			return periodoAtual;
+		}
+
+		public void setPeriodoAtual(int periodoAtual) {
+			this.periodoAtual = periodoAtual;
+		}
 }

@@ -21,6 +21,10 @@ public class Periodo {
 		disciplinas.add(disciplina);
 	}
 	
+	public void removeDisciplina(Disciplina disciplina){
+		disciplinas.remove(disciplina);
+	}
+	
 	public Periodo(List<Disciplina> disciplinas){
 		this.disciplinas = disciplinas;
 		for(Disciplina dsp : disciplinas){
