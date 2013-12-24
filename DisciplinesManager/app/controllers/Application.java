@@ -1,5 +1,6 @@
 package controllers;
 
+import models.Disciplina;
 import models.PlanoDeCurso;
 import play.mvc.Controller;
 import play.mvc.Result;
@@ -21,7 +22,17 @@ public class Application extends Controller{
 	public static Result attPeriodo(int periodo) {
         planoDeCurso.setPeriodoAtual(periodo);
         return redirect(routes.Application.index());
-}
+	}
+	
+	public static Result alocaDisciplina(String disc){
+		for(Disciplina disciplina :planoDeCurso.getAllDisciplines()){
+			if(disciplina.getNome().equals(disc)){
+				planoDeCurso.adicionaDisciplinaAPeriodo(disciplina, planoDeCurso.getPeriodoAtual());;
+				planoDeCurso.getAllDisciplines().remove(disciplina);
+				break;
+			}
+		}
+		return redirect(routes.Application.index());
+	}
 	
 }
-

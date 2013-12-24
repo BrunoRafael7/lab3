@@ -10,3 +10,5 @@ GET     /assets/*file               controllers.Assets.at(path="/public", file)
 
 POST    /attPeriodo/:periodo           controllers.Application.attPeriodo(periodo:Int)
 GET     /attPeriodo/:periodo           controllers.Application.attPeriodo(periodo:Int)
+POST    /alocaDisciplina/:disc           controllers.Application.alocaDisciplina(disc:String)
+GET     /alocaDisciplina/:disc           controllers.Application.alocaDisciplina(disc:String)

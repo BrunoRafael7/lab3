@@ -39,6 +39,7 @@ public class PlanoDeCurso {
         public void adicionaDisciplinaAPeriodo(Disciplina disciplina, int periodo){
                 if(this.verificaSePreRequisitosEstaoOK(disciplina, this.getPeriodos())){
                         periodos.get(periodo - 1).adicionaUmaDisciplina(disciplina);
+                        gradeCurricular.getAllDisciplines().remove(disciplina)  ;
                 }
         }
         

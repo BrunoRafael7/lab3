@@ -16,6 +16,17 @@ function attPeriodo(periodo){
         }
       });
 }
+
+function alocaDisciplina(disc){
+	$.ajax({
+        type: "POST",
+        url: "/alocaDisciplina/" + disc,
+        data: "",
+        success: function(){
+              window.location = "/";
+        }
+      });
+}
 </script>
 <br>
 @main("Meu curso") {
@@ -181,7 +192,7 @@ function attPeriodo(periodo){
                         <diciplinas-ofertadas>Disciplinas Ofertadas</diciplinas-ofertadas>
                         <div id="periodo" class="allDisciplines">
 	                        @for(disc <- disciplinasOfertadas){
-		                        <div class="descricaoDeDisciplina">
+		                        <div id="@disc.getNome()" onclick="alocaDisciplina('@disc.getNome()')" class="descricaoDeDisciplina">
 		                                <nome>@disc.getNome()</nome>
 		                                <br/>
 		                                <descricao>@disc.getCreditos() creditos</descricao>
